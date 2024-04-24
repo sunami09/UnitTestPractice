@@ -34,3 +34,28 @@ TEST(PasswordTest, password_with_mixed_characters)
 	int actual = my_password.count_leading_characters("1a2b3c");
 	ASSERT_EQ(6, actual);
 }
+TEST(PasswordTest, identical_chars)
+{
+    Password my_password;
+    int result = my_password.count_leading_characters("ZZ");
+    ASSERT_EQ(2, result);
+}
+TEST(PasswordTest, spaces_between)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("z z");
+	ASSERT_EQ(1, actual);
+}
+TEST(PasswordTest, space_count)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("   x");
+	ASSERT_EQ(3, actual);
+}
+
+TEST(PasswordTest, empty_string)
+{
+	Password my_password;
+	int actual = my_password.count_leading_characters("");
+	ASSERT_EQ(0, actual);
+}
